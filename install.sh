@@ -1,6 +1,36 @@
 #!/bin/bash
 set -e
 
+cat << "EOF"
+███████╗█████╗ ███████╗████████╗███████╗██╗███████╗
+██╔════╝██╔══██╗██╔════╝╚══██╔══╝██╔════╝██║██╔════╝
+███████╗███████║███████╗   ██║   █████╗  ██║███████╗
+╚════██║██╔══██║╚════██║   ██║   ██╔══╝  ██║╚════██║
+███████║██║  ██║███████║   ██║   ███████╗██║███████║
+╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝╚══════╝
+EOF
+
+echo "\n🚀 Instalando FastDir - Ultra Fast Directory Brute Forcer"
+echo "By lgdev2002 - Co-CEO BackTrackSec"
+echo ""
+
+echo "📦 Instalando FastDir via build local..."
+mix deps.get
+mix escript.build
+sudo cp fastdir /usr/local/bin/
+sudo chmod +x /usr/local/bin/fastdir
+
+echo "✅ FastDir instalado com sucesso!"
+echo ""
+echo "Exemplo de uso:"
+echo "  fastdir -u https://target.com -w /wordlists/common.txt"
+echo "  fastdir -u https://target.com -w https://example.com/wordlist.txt -t 200"
+echo ""
+echo "Documentação: https://github.com/lgdev2002/fastdir"
+echo "Issues: https://github.com/lgdev2002/fastdir/issues"
+#!/bin/bash
+set -e
+
 # Banner
 cat << "EOF"
 ███████╗█████╗ ███████╗████████╗███████╗██╗███████╗

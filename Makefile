@@ -1,8 +1,10 @@
-.PHONY: build install test clean docker help
+
+.PHONY: build install test clean help
+
 
 APP_NAME = fastdir
-DOCKER_IMAGE = lgdev2002/fastdir
 VERSION = 1.0.0
+
 
 help:
 	@echo "FastDir - Ultra Fast Directory Brute Forcer"
@@ -10,7 +12,6 @@ help:
 	@echo "  make build    - Build the application"
 	@echo "  make install  - Install locally"
 	@echo "  make test     - Run tests"
-	@echo "  make docker   - Build Docker image"
 	@echo "  make clean    - Clean build artifacts"
 
 build:
@@ -34,7 +35,3 @@ clean:
 	mix clean
 	rm -f fastdir
 
-docker:
-	@echo "🐳 Building Docker image..."
-	docker build -t $(DOCKER_IMAGE):$(VERSION) .
-	docker tag $(DOCKER_IMAGE):$(VERSION) $(DOCKER_IMAGE):latest

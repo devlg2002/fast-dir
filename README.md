@@ -1,10 +1,5 @@
 # 🚀 FastDir - Ultra Fast Directory Brute Forcer
 
-[![GitHub stars](https://img.shields.io/github/stars/lgdev2002/fastdir?style=for-the-badge)](https://github.com/lgdev2002/fastdir/stargazers)
-[![Docker Pulls](https://img.shields.io/docker/pulls/lgdev2002/fastdir?style=for-the-badge)](https://hub.docker.com/r/lgdev2002/fastdir)
-[![License](https://img.shields.io/github/license/lgdev2002/fastdir?style=for-the-badge)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/lgdev2002/fastdir?style=for-the-badge)](https://github.com/lgdev2002/fastdir/releases)
-
 ```
 ███████╗ █████╗ ███████╗████████╗██████╗ ██╗██████╗ 
 ██╔════╝██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██╔══██╗
@@ -20,19 +15,9 @@ Built with Elixir's legendary concurrency model, FastDir delivers **unmatched pe
 
 > *By lgdev2002 - Co-CEO BackTrackSec*
 
-## 🎯 One-Line Installation
+## 🎯 Instalação One-Line
 
-### Docker (Recommended)
 ```bash
-curl -s https://raw.githubusercontent.com/lgdev2002/fastdir/main/install.sh | bash
-```
-
-### Alternative Methods
-```bash
-# Docker run directly
-docker run --rm lgdev2002/fastdir -u https://target.com -w https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt
-
-# Build from source
 git clone https://github.com/lgdev2002/fastdir && cd fastdir && make install
 ```
 
@@ -44,7 +29,6 @@ git clone https://github.com/lgdev2002/fastdir && cd fastdir && make install
 - [Usage Examples](#-usage-examples)
 - [Installation Options](#-installation-options)
 - [Configuration](#-configuration)
-- [Docker Usage](#-docker-usage)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -211,34 +195,7 @@ export FASTDIR_USER_AGENT="Custom-Agent/1.0"
 export FASTDIR_TIMEOUT=15
 ```
 
-## 🐳 Docker Usage
 
-### Basic Docker Commands
-```bash
-# Quick scan
-docker run --rm lgdev2002/fastdir -u https://target.com -w common.txt
-
-# With custom wordlist
-docker run --rm -v $(pwd):/data lgdev2002/fastdir -u https://target.com -w /data/wordlist.txt
-
-# Save results
-docker run --rm -v $(pwd):/output lgdev2002/fastdir -u https://target.com -w common.txt -o /output/results.txt
-
-# Interactive mode
-docker run --rm -it lgdev2002/fastdir bash
-```
-
-### Docker Compose
-```yaml
-version: '3.8'
-services:
-  fastdir:
-    image: lgdev2002/fastdir
-    volumes:
-      - ./wordlists:/wordlists
-      - ./results:/results
-    command: ["-u", "https://target.com", "-w", "/wordlists/big.txt", "-o", "/results/scan.txt"]
-```
 
 ## 🎨 Output Examples
 
