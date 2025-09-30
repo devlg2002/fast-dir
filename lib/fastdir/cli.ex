@@ -6,7 +6,7 @@ defmodule FastDir.CLI do
   """
 
   def main(args) do
-    case OptionParser.parse(args, switches: [
+    {opts, _, _} = OptionParser.parse(args, switches: [
       url: :string, wordlist: :string, threads: :integer, status_codes: :string,
       extensions: :string, recursive: :boolean, delay: :integer, user_agent: :string,
       headers: :string, output: :string, silent: :boolean, verbose: :boolean,
@@ -15,10 +15,12 @@ defmodule FastDir.CLI do
       u: :url, w: :wordlist, t: :threads, c: :status_codes, x: :extensions,
       r: :recursive, d: :delay, a: :user_agent, H: :headers, o: :output,
       s: :silent, v: :verbose, h: :help
-    ]) do
-      {opts, _, _} when opts[:help] -> show_help()
-      {opts, _, _} when is_nil(opts[:url]) or is_nil(opts[:wordlist]) -> show_help()
-      {opts, _, _} -> run_scan(opts)
+    ])
+
+    cond do
+      opts[:help] -> show_help()
+      is_nil(opts[:url]) or is_nil(opts[:wordlist]) -> show_help()
+      true -> run_scan(opts)
     end
   end
 
