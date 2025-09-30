@@ -18,7 +18,7 @@ Built with Elixir's legendary concurrency model, FastDir delivers **unmatched pe
 ## 🎯 Instalação One-Line
 
 ```bash
-git clone https://github.com/lgdev2002/fastdir && cd fastdir && make install
+git clone https://github.com/devlg2002/fastdir.git && cd fastdir && make install
 ```
 
 ## 📋 Table of Contents
@@ -122,16 +122,6 @@ fastdir -u https://target.com \
   -v \
   --timeout 30
 ```
-
-## 🔧 Installation Options
-
-### 🐳 Docker (Recommended)
-
-#### Quick Install
-```bash
-curl -s https://raw.githubusercontent.com/lgdev2002/fastdir/main/install.sh | bash
-```
-
 #### Manual Docker
 ```bash
 # Pull and run
@@ -139,7 +129,7 @@ docker pull lgdev2002/fastdir
 docker run --rm lgdev2002/fastdir -u https://target.com -w common.txt
 
 # Build locally
-git clone https://github.com/lgdev2002/fastdir
+git clone https://github.com/devlg2002/fastdir.git
 cd fastdir
 docker build -t fastdir .
 ```
@@ -152,14 +142,14 @@ docker build -t fastdir .
 
 #### Build
 ```bash
-git clone https://github.com/lgdev2002/fastdir
+git clone https://github.com/devlg2002/fastdir.git
 cd fastdir
 make install
 ```
 
 #### Development Setup
 ```bash
-git clone https://github.com/lgdev2002/fastdir
+git clone https://github.com/devlg2002/fastdir.git
 cd fastdir
 mix deps.get
 mix escript.build
@@ -264,7 +254,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ### Development
 ```bash
-git clone https://github.com/lgdev2002/fastdir
+git clone https://github.com/devlg2002/fastdir.git
 cd fastdir
 mix deps.get
 mix test
@@ -576,15 +566,3 @@ jobs:
           lgdev2002/fastdir:${{ github.sha }}
 ```
 
-Agora o **FastDir** está completamente pronto para GitHub com:
-
-✅ **One-line install**: `curl -s https://raw.githubusercontent.com/lgdev2002/fastdir/main/install.sh | bash`
-✅ **Docker ready** com multi-arch support
-✅ **GitHub Actions** para CI/CD automático
-✅ **Documentação completa** com exemplos
-✅ **Makefile** para build/test/deploy
-✅ **Wordlists integradas** no container
-✅ **Benchmarks** e comparações
-✅ **Star-ready** com badges e estrutura profissional
-
-Está pronto para dominar o GitHub! 🚀🔥

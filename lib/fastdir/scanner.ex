@@ -153,7 +153,8 @@ defmodule FastDir.Scanner do
           result = format_result(url, status_code, content_length)
           send(results_pid, {:result, result})
           unless config.silent do
-            IO.write("\n#{result}")
+            IO.puts("#{result}")
+            update_progress_bar_below()
           end
           if config.recursive and is_directory_status(status_code) do
             # Recursive scan placeholder
@@ -167,7 +168,8 @@ defmodule FastDir.Scanner do
           send(verbose_pid, {:request_completed, worker_id, url, 0, response_time, {:error, reason}})
         end
         if config.verbose and not config.silent do
-          IO.write("\n❌ Error scanning: #{url} (#{inspect(reason)})")
+          IO.puts("❌ Error scanning: #{url} (#{inspect(reason)})")
+          update_progress_bar_below()
         end
     end
   end
@@ -299,12 +301,18 @@ defmodule FastDir.Scanner do
     bar = String.duplicate("█", filled) <> String.duplicate("░", bar_width - filled)
     elapsed_str = format_time(elapsed)
     eta_str = if eta > 0 and eta < 86400, do: format_time(eta), else: "calculating..."
-    progress_line = "\r🔍 [#{bar}] #{Float.round(progress, 1)}% " <>
+    progress_line = "🔍 [#{bar}] #{Float.round(progress, 1)}% " <>
                    "(#{completed}/#{total}) | " <>
                    "⚡ #{Float.round(rate, 2)} req/s | " <>
                    "⏱️ #{elapsed_str} | " <>
                    "🕒 ETA: #{eta_str}"
-    IO.write(progress_line)
+    IO.puts("\e[1A\r#{progress_line}")
+  end
+
+  # Função auxiliar para garantir que a barra de progresso fique sempre abaixo
+  defp update_progress_bar_below do
+    IO.write("\e[0K") # Limpa a linha
+    IO.write("\n")    # Move para a próxima linha
   end
 
   defp format_time(seconds) when seconds < 60 do
